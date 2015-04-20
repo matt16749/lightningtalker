@@ -1,6 +1,6 @@
 class StudentsController < ApplicationController
   def index
-    @students = User.where(isinstructor: false)
+    @students = User.is_student
   end
 
   def show

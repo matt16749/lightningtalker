@@ -13,7 +13,8 @@ class User < ActiveRecord::Base
 
   delegate :address, :city, :state, :zip, to: :location
 
-  scope :is_instructor, -> {where(is_instructor: true)}
+  scope :is_instructor, -> {where(isinstructor: true)}
+  scope :is_student, -> {where(isinstructor: false)}
 
 
   def slug_candidates
