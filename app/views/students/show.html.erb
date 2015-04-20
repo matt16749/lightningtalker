@@ -5,4 +5,28 @@
     <small>State: <%= @student.state %></small><br>
     <small>Zip: <%= @student.zip %></small>
   </h1>
+
+  <table class="table table-striped table-bordered">
+    <h4>Requests</h4>
+  <thead>
+    <tr>
+      <th>Subject</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>Instructor?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @requests.each do |request| %>
+    <tr>
+      <td><%= request.subject %></td>
+      <td><%= request.description %></td>
+      <td><%= request.location.address if !request.location.blank? %></td>
+      <td><%= request.location.city if !request.location.blank? %></td>
+      <td><%= request.has_instructor? %></td>
+    </tr>  
+    <% end %>
+  </tbody>
+</table>
 </div>
