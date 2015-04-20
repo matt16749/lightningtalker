@@ -12,6 +12,6 @@ FactoryGirl.define do
 
     factory :user_instructor do 
       isinstructor true
-    end
+    end    
   end
 end
