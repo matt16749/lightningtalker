@@ -5,6 +5,8 @@ class Request < ActiveRecord::Base
   scope :by_student, ->(id) {where(student_id: id)}
   scope :by_instructor, ->(id) {where(instructor_id: id)}
 
+  delegate :city, :address, to: :location
+
   def no_instructor?
     self.instructor_id.blank? ? nil : "#{User.full_name(self.instructor_id)}"
   end
