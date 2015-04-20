@@ -5,6 +5,6 @@ class StudentsController < ApplicationController
 
   def show
     @student = User.find_by(first_name: params[:id].capitalize)
-    @requests = Request.by_student(@student.id)
+    @requests = @student.student_requests
   end
 end

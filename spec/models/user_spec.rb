@@ -41,14 +41,14 @@ RSpec.describe User, :type => :model do
   describe 'creating a request' do 
     it 'allows students to make a request' do 
       student = create(:user_student)
-      request = create(:request, student_id: student.id)
+      request = student.student_requests.create(subject: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
       expect(request.student_id).to match(student.id)
     end
     it 'allows instructors to take on requests' do 
       student = create(:user_student)
-      request = create(:request, student_id: student.id)
+      request = student.student_requests.create(subject: Faker::Lorem.sentence, description: Faker::Lorem.paragraph)
       instructor = create(:user_instructor)
-      request.instructor_id = instructor.id
+      instructor.instructor_responses.push(request)
       expect(request.instructor_id).to match(instructor.id)
     end
   end
