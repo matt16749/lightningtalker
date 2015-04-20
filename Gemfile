@@ -29,6 +29,11 @@ gem "factory_girl_rails", "~> 4.4.1"
 gem "faker", "~> 1.4.3"
 
 group :development, :test do
+  gem 'puma'
+  gem 'rails_12factor'
+end
+
+group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
