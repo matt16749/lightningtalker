@@ -24,7 +24,11 @@
       <td><%= request.description %></td>
       <td><%= request.location.address if !request.location.blank? %></td>
       <td><%= request.location.city if !request.location.blank? %></td>
-      <td><%= request.has_instructor? %></td>
+      <% if request.no_instructor? %>
+      <td><%= link_to "#{request.no_instructor?}", instructor_path(User.find(request.instructor_id)) %></td>
+      <% else %>
+      <td>No</td>
+      <% end %>
     </tr>  
     <% end %>
   </tbody>

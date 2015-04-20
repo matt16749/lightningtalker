@@ -15,9 +15,15 @@ class User < ActiveRecord::Base
 
   scope :is_instructor, -> {where(is_instructor: true)}
 
+
   def slug_candidates
     [:first_name,
       [:first_name,:last_name]
     ]
+  end
+
+  def self.full_name(id)
+    user = find(id)
+    return "#{user.first_name} #{user.last_name}"
   end
 end

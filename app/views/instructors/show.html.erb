@@ -1,0 +1,32 @@
+<div class="ind-instructor">
+  <h1><%= "#{@instructor.first_name} #{@instructor.last_name}" %><br>
+    <small>Address: <%= @instructor.address %></small><br>
+    <small>City: <%= @instructor.city %></small><br>
+    <small>State: <%= @instructor.state %></small><br>
+    <small>Zip: <%= @instructor.zip %></small>
+  </h1>
+
+  <table class="requests table-striped table-bordered col-md-10">
+  <caption><h2>Responses to Student Requests</h2></caption>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Subject</th>
+      <th>Description</th>
+      <th>Address</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @responses.each do |response| %>
+    <tr>
+      <td><%= link_to "#{User.full_name(response.student_id)}", student_path(User.find(response.student_id)) %></td>
+      <td><%= response.subject %></td>
+      <td><%= response.description %></td>
+      <td><%= response.location.address if !response.location.blank? %></td>
+      <td><%= response.location.city if !response.location.blank? %></td>      
+    </tr>  
+    <% end %>
+  </tbody>
+</table>
+</div>

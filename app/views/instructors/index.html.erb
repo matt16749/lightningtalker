@@ -1,0 +1,24 @@
+<div class="all-instructors col-md-8 col-md-offset-2">
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Number of Responses</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @instructors.each do |instructor| %>
+    <tr>
+      <td><%= link_to "#{instructor.id}", instructor_path(instructor) %></td>
+      <td><%= instructor.first_name %></td>
+      <td><%= instructor.last_name %></td>
+      <td><%= instructor.email %></td>
+      <td><%= Request.by_instructor(instructor.id).count %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</div>
